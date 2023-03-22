@@ -23,7 +23,8 @@ public class PiegeRenard : MonoBehaviour
 
         if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out Hit, 1))
          {
-            transform.Rotate(Vector3.up * Random.Range(90, 180));
+            transform.Rotate(0f,Random.Range(90f, 180f),0f);
+            
         }
     }
 
