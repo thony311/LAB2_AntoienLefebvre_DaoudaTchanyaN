@@ -16,7 +16,7 @@ public class GestionPlayer : MonoBehaviour
     private void Start()
     {
         // Position de départ du joueur
-        this.transform.position = new Vector3(-34f, 1.01f, -47f);
+        //this.transform.position = new Vector3(-34f, 1.01f, -47f);
         _rb = GetComponent<Rigidbody>();
         _debutJeu= false;
     }
@@ -47,16 +47,24 @@ public class GestionPlayer : MonoBehaviour
             _debutJeu = true;
             Debug.Log("c'est parti!");
         }
-        float positionX = Input.GetAxis("Horizontal");
-        float positionZ = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(positionX, 0f, positionZ);
-        direction.Normalize();
-        _rb.velocity = direction * Time.fixedDeltaTime * _vitesse;
-        if(direction != Vector3.zero)
+        float positionX = Input.GetAxis("Vertical");
+        float positionZ = Input.GetAxis("Horizontal");
+        if(positionX > 0)
         {
-            Quaternion toRotation = Quaternion.LookRotation(direction,Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,toRotation,_vitesseRotation * Time.deltaTime);
+            transform.Translate(Vector3.forward * _vitesse);
         }
+        if(positionZ != 0)
+        {
+            transform.Rotate(0f, positionZ * _vitesseRotation, 0f);
+        }
+        //Vector3 direction = new Vector3(0f, 0f, positionZ);
+        //direction.Normalize();
+        //_rb.velocity = direction * Time.fixedDeltaTime * _vitesse;
+        //if(direction != Vector3.zero)
+        //{
+        //    Quaternion toRotation = Quaternion.LookRotation(direction,Vector3.up);
+        //    transform.rotation = Quaternion.RotateTowards(transform.rotation,toRotation,_vitesseRotation * Time.deltaTime);
+        //}
     }
 
 }

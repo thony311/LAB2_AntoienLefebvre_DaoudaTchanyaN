@@ -25,8 +25,8 @@ public class ScriptFin : MonoBehaviour
     {
         int indexScene = SceneManager.GetActiveScene().buildIndex;
 
-
-        if (collision.gameObject.tag == "Player" && indexScene == 2)
+        if(collision.gameObject.tag == "Player")
+        if (indexScene == 2)
         {
             float temps = Time.time - player.GetTimeStart();
             int erreurs = gestionJeu.getPointage();
