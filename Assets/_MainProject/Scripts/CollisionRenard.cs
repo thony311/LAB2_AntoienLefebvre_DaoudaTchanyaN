@@ -9,6 +9,7 @@ public class CollisionRenard : MonoBehaviour
     private float _timeToChange = 4f;
     private float _timeSinceChange = 0f;
     [SerializeField] private Material _couleur;
+    [SerializeField] private Material _couleurRouge;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,23 +23,21 @@ public class CollisionRenard : MonoBehaviour
         _timeSinceChange += Time.deltaTime;
         if (_timeSinceChange >= _timeToChange && _toucher == true)
         {
-            gameObject.GetComponent<SkinnedMeshRenderer>().material.color = _couleur.color;
+            gameObject.GetComponent<SkinnedMeshRenderer>().material = _couleur;
             _toucher = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-
-        Debug.Log("Touché!!!!");
-
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Touché!!!!");
-            if (!_toucher)
+            if (_toucher == false)
             {
+                
                 _toucher = true;
-                gameObject.GetComponent<SkinnedMeshRenderer>().material.color = Color.red;
+                gameObject.GetComponent<SkinnedMeshRenderer>().material = _couleurRouge;
                 _gestionJeu.AugmenterPointage();
                 _timeSinceChange = 0f;
 

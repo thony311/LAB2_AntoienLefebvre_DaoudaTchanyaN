@@ -26,7 +26,7 @@ public class ScriptFin : MonoBehaviour
         int indexScene = SceneManager.GetActiveScene().buildIndex;
 
 
-        if (collision.gameObject.tag == "Player" )
+        if (collision.gameObject.tag == "Player" && indexScene == 2)
         {
             float temps = Time.time - player.GetTimeStart();
             int erreurs = gestionJeu.getPointage();
@@ -37,10 +37,10 @@ public class ScriptFin : MonoBehaviour
             Debug.Log("Le temps finale est maintenant de " + total);
             player.finDeJeu();
         }
-        //else
-        //{
-        //    // charger la scene suivante
-        //    SceneManager.LoadScene(indexScene + 1);
-        //}
+        else
+        {
+            // charger la scene suivante
+            SceneManager.LoadScene(indexScene + 1);
+        }
     }
 }

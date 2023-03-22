@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2207973045827744681}
   - component: {fileID: 2207973045832073577}
   - component: {fileID: -7086126838200265009}
+  - component: {fileID: 7941083429785922509}
   m_Layer: 0
   m_Name: Fence Type2 03
   m_TagString: Untagged
@@ -94,7 +95,7 @@ MeshCollider:
   m_GameObject: {fileID: 2207973045825881115}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -112,3 +113,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _couleur: {fileID: 2100000, guid: 1fc121be3f680634fbb8cab1fa2d47c8, type: 2}
+--- !u!65 &7941083429785922509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207973045825881115}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6643157, y: 1.3857071, z: 0.19823581}
+  m_Center: {x: -1.2349062, y: 0.6858665, z: 0.0036785975}

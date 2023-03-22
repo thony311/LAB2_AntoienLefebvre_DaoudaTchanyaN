@@ -18,12 +18,12 @@ public class PiegeRenard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0f,0f, 0f);
         transform.Translate(Vector3.forward * _vitesse * Time.deltaTime);
 
         if(Physics.Raycast(transform.position,transform.TransformDirection(Vector3.forward),out Hit, 1))
          {
-            transform.Rotate(0f,Random.Range(90f, 180f),0f);
+            transform.Rotate(0f,Random.Range(135f, 225f),0f);
             
         }
     }
