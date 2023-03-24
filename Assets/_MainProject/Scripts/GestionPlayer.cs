@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GestionPlayer : MonoBehaviour
 {
@@ -12,11 +13,10 @@ public class GestionPlayer : MonoBehaviour
     private float _timeStart;
     private bool _debutJeu;
 
-    // Méthode privéees
+    
     private void Start()
     {
-        // Position de départ du joueur
-        this.transform.position = new Vector3(-34f, 1.01f, -47f);
+        // Cherche le rigid body du joueur et initialise le debut jeu a false
         _rb = GetComponent<Rigidbody>();
         _debutJeu= false;
     }
@@ -24,39 +24,45 @@ public class GestionPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Arrete les mouvements du joueurs si la fin su jeu est true
         if (!_finJeu)
             MouvementJoueur();
     }
 
     public void finDeJeu()
     {
+        // Change le finJeu pour true
         _finJeu = true;
     }
 
     public float GetTimeStart()
     {
+        // Retourne le temps
         return _timeStart;
     }
 
 
     private void MouvementJoueur()
     {
-        if(_debutJeu == false && Input.anyKey)
+        // Permet de bouger le personnage
+        if(_debutJeu == false && (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizaontal") > 0))
         {
             _timeStart = Time.time;
             _debutJeu = true;
-            Debug.Log("c'est parti!");
+            Debug.Log("c'est parti!" + Time.time);
         }
-        float positionX = Input.GetAxis("Horizontal");
-        float positionZ = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(positionX, 0f, positionZ);
-        direction.Normalize();
-        _rb.velocity = direction * Time.fixedDeltaTime * _vitesse;
-        if(direction != Vector3.zero)
+        float positionX = Input.GetAxis("Vertical");
+        float positionZ = Input.GetAxis("Horizontal");
+        if(positionX > 0)
         {
-            Quaternion toRotation = Quaternion.LookRotation(direction,Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation,toRotation,_vitesseRotation * Time.deltaTime);
+            //this.GetComponent<Rigidbody>().velocity = Vector3.forward * _vitesse;
+            transform.Translate(Vector3.forward * _vitesse);
         }
+        if(positionZ != 0)
+        {
+            transform.Rotate(0f, positionZ * _vitesseRotation, 0f);
+        }
+        
     }
 
 }
