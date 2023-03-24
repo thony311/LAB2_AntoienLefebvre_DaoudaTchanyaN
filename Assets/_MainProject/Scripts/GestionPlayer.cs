@@ -45,12 +45,13 @@ public class GestionPlayer : MonoBehaviour
         {
             _timeStart = Time.time;
             _debutJeu = true;
-            Debug.Log("c'est parti!");
+            Debug.Log("c'est parti!" + Time.time);
         }
         float positionX = Input.GetAxis("Vertical");
         float positionZ = Input.GetAxis("Horizontal");
         if(positionX > 0)
         {
+            //this.GetComponent<Rigidbody>().velocity = Vector3.forward * _vitesse;
             transform.Translate(Vector3.forward * _vitesse);
         }
         if(positionZ != 0)
