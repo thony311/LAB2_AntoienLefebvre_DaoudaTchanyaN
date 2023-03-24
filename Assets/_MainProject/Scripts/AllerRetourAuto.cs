@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GesionBateau : MonoBehaviour
+public class AllerRetourAuto : MonoBehaviour
 {
     //Attributs
     [SerializeField] private float _vitesse = -0.2f;
@@ -11,7 +11,7 @@ public class GesionBateau : MonoBehaviour
     void Start()
     {
         //Initialisation de la direction
-        direction = new Vector3(_vitesse, 0f, 0f);
+        direction = new Vector3( 0f, 0f,_vitesse);
     }
 
     // Update is called once per frame
@@ -26,7 +26,6 @@ public class GesionBateau : MonoBehaviour
         //Changement du mouvement pour l'opposé en plus d'une rotation 180 degrée lorsque qu'il y a une collision pour faire une 
         _vitesse *= -1;
         transform.Rotate(0f, 180f, 0f);
-        
-    }
 
+    }
 }

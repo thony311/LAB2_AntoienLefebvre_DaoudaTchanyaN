@@ -35,7 +35,7 @@ public class GestionCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Lorsque qu'il rentre en collision avec le player/joueur, il va devenir rouge
+        // Lorsque qu'il rentre en collision avec le player/joueur, il va devenir rouge et augementer le pointage
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Touché!!!!");

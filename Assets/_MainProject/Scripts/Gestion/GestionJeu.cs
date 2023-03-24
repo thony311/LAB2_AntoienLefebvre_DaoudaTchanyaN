@@ -6,6 +6,8 @@ public class GestionJeu : MonoBehaviour
 {
     // attributs
     private int _pointage;
+    private float[] _tempsNiv = new float[3];
+    private int[] _pointageNiv = new int[3];
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class GestionJeu : MonoBehaviour
         Debug.Log("Atteinfre la fin du parcours le plus rapidement possible");
     }
 
-    // méthode publique
+    
     public void AugmenterPointage()
     {
         // Augmente le pointage de 1 
@@ -48,5 +50,27 @@ public class GestionJeu : MonoBehaviour
     {
         // Retourne le pointage
         return _pointage;
+    }
+
+    // prend le temps par niveau
+    public void SetTempsNiv(int index,float temps)
+    {
+        // Prend le temps de chaque niveau
+        _tempsNiv[index] = temps;
+    }
+    // prend le pointage par niveau
+    public void SetPointageNiv(int index,int pointage) 
+    {
+        _pointageNiv[index] = pointage;
+    }
+    // retourne le pointage par niveau
+    public int GetPointageNiv(int index)
+    {
+        return _pointageNiv[index];
+    }
+    // retourne le temps par niveau
+    public float GetTempsNiv(int index) 
+    { 
+        return _tempsNiv[index];
     }
 }

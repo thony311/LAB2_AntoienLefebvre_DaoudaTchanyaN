@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GestionPlayer : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class GestionPlayer : MonoBehaviour
     private void MouvementJoueur()
     {
         // Permet de bouger le personnage
-        if(_debutJeu == false && Input.anyKey)
+        if(_debutJeu == false && (Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizaontal") > 0))
         {
             _timeStart = Time.time;
             _debutJeu = true;
