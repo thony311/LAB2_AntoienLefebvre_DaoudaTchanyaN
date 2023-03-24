@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class GestionCollision : MonoBehaviour
 {
-    // attribut
-
+    // Attributs
     private GestionJeu _gestionJeu;
     private bool _toucher;
     private float _timeToChange =4f; 
@@ -15,13 +14,16 @@ public class GestionCollision : MonoBehaviour
 
     private void Start()
     {
+        // Va chercher le gestion jeu
         _gestionJeu = FindObjectOfType<GestionJeu>();
+        // Initialise _toucher à faux
         _toucher = false;
         
     }
 
     private void Update()
     {
+        // Ramene la couleur à la couleur de base après un nombre de seconde déterminer
         _timeSinceChange += Time.deltaTime;
         if(_timeSinceChange >= _timeToChange && _toucher == true)
         {
@@ -33,6 +35,7 @@ public class GestionCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Lorsque qu'il rentre en collision avec le player/joueur, il va devenir rouge
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Touché!!!!");
@@ -42,7 +45,6 @@ public class GestionCollision : MonoBehaviour
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
                 _gestionJeu.AugmenterPointage();
                 _timeSinceChange = 0f;
-                
             }
         }
     }

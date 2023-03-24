@@ -12,11 +12,10 @@ public class GestionPlayer : MonoBehaviour
     private float _timeStart;
     private bool _debutJeu;
 
-    // Méthode privéees
+    
     private void Start()
     {
-        // Position de départ du joueur
-        //this.transform.position = new Vector3(-34f, 1.01f, -47f);
+        // Cherche le rigid body du joueur et initialise le debut jeu a false
         _rb = GetComponent<Rigidbody>();
         _debutJeu= false;
     }
@@ -24,23 +23,27 @@ public class GestionPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Arrete les mouvements du joueurs si la fin su jeu est true
         if (!_finJeu)
             MouvementJoueur();
     }
 
     public void finDeJeu()
     {
+        // Change le finJeu pour true
         _finJeu = true;
     }
 
     public float GetTimeStart()
     {
+        // Retourne le temps
         return _timeStart;
     }
 
 
     private void MouvementJoueur()
     {
+        // Permet de bouger le personnage
         if(_debutJeu == false && Input.anyKey)
         {
             _timeStart = Time.time;
@@ -58,14 +61,7 @@ public class GestionPlayer : MonoBehaviour
         {
             transform.Rotate(0f, positionZ * _vitesseRotation, 0f);
         }
-        //Vector3 direction = new Vector3(0f, 0f, positionZ);
-        //direction.Normalize();
-        //_rb.velocity = direction * Time.fixedDeltaTime * _vitesse;
-        //if(direction != Vector3.zero)
-        //{
-        //    Quaternion toRotation = Quaternion.LookRotation(direction,Vector3.up);
-        //    transform.rotation = Quaternion.RotateTowards(transform.rotation,toRotation,_vitesseRotation * Time.deltaTime);
-        //}
+        
     }
 
 }
